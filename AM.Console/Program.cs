@@ -54,3 +54,4 @@ Traveller T1 = new Traveller();
 T1.PassengerType();
 Passenger S1 = new Staff();
 S1.PassengerType();
+
