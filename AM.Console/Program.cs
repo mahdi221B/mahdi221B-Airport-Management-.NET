@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // Adding proejct reefrence BD+ add + Project Referenece aprés Light+ Quick actions + Add the using
 using AM.ApplicationCore.Domain;
+using AM.ApplicationCore.Services;
 /*Plane p1 = new Plane();
 //PN va pas utiliser nii set ni get => directement p1.name_attribute
 p1.Capacity = 1222;
@@ -55,3 +56,7 @@ T1.PassengerType();
 Passenger S1 = new Staff();
 S1.PassengerType();
 
+ServiceFlight sf = new ServiceFlight();
+//JmA
+DateTime startDate = new DateTime(01 / 02 / 2023);
+Console.WriteLine(sf.ProgrammedFlightNumber(startDate));
