@@ -15,7 +15,7 @@ namespace AM.ApplicationCore.Domain
         public DateTime EffectiveArrival { get; set; }
         public string ? Departure { get; set; }
         public string ? Destination { get; set; }
-
+        public String AireLineLogo { get; set; }
         //Proprieté de navigation
         public Plane Plane { get; set; }
         public ICollection<Passenger> ? Passengers { get; set; }
