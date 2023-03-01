@@ -39,6 +39,7 @@ namespace AM.ApplicationCore.Services
                     {
                         if (f.FlightDate.Equals(filterValue))
                             FlightsFiltered.Add(f);
+                            Console.WriteLine(f);   
                     };
                     break;
 
@@ -47,6 +48,7 @@ namespace AM.ApplicationCore.Services
                     {
                         if (f.Destination == filterValue)
                             FlightsFiltered.Add(f);
+                            Console.WriteLine(f);
                     };
                     break;
             }
@@ -59,7 +61,9 @@ namespace AM.ApplicationCore.Services
             //M2.1:
             var details1 = Flights.Where(f=>f.Plane.Equals(plane)).Select(f=> (f.FlightDate, f.Destination ));
             //M2.2:
-            var details2 = plane.Flights.Select(f => (f.FlightDate, f.Destination));
+           // var details2 = plane.Flights.Select(f => (f.FlightDate, f.Destination));
+            foreach (var v in details1)
+                Console.WriteLine("Flight Date; " + v.FlightDate + " Flight destination: " + v.Destination);
 
         }
 
@@ -101,6 +105,23 @@ namespace AM.ApplicationCore.Services
             return query.OfType<Traveller>().Take(3);*/
             //M2:
             return flight.Passengers.OfType<Traveller>().OrderByDescending(f => f.BirthDate).Take(3);
+        }
+
+        public IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights()
+        {
+            var req = from f in Flights
+                      group f by f.Destination;
+
+            //  var reqLambda = Flights.GroupBy(f => f.Destination);
+
+            foreach (var g in req)
+            {
+                Console.WriteLine("Destination: " + g.Key);
+                foreach (var f in g)
+                    Console.WriteLine("Décollage: " + f.FlightDate);
+
+            }
+            return req;
         }
     }
 }

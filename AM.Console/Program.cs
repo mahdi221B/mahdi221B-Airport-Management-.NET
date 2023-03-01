@@ -60,3 +60,5 @@ ServiceFlight sf = new ServiceFlight();
 //JmA
 DateTime startDate = new DateTime(01 / 02 / 2023);
 Console.WriteLine(sf.ProgrammedFlightNumber(startDate));
+sf.Flights = TestData.listFlights;
+sf.ShowFlightDetails(TestData.BoingPlane);

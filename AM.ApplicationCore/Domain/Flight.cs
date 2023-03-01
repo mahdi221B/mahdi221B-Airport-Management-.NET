@@ -9,7 +9,7 @@ namespace AM.ApplicationCore.Domain
     public class Flight
     {
         //Proprieté de base
-        public int FlighId { get; set; }
+        public int FlightId { get; set; }
         public DateTime FlightDate { get; set; }
         public int EstimatedDuration { get; set; }
         public DateTime EffectiveArrival { get; set; }
