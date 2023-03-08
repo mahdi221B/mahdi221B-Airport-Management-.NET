@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,13 +11,19 @@ namespace AM.ApplicationCore.Domain
     public class Passenger
     {
         //Proprieté de base
-            //Clé primaire declaré directement {ID,Id,PassengerId} or CIN and we have to add annotation which is [Key]
-        public int Id { get; set; }
-        public int PassportNumber { get; set; }
+        //Clé primaire declaré directement {ID,Id,PassengerId} or CIN and we have to add annotation which is [Key]
+        // public int Id { get; set; }
+        [Key,StringLength(7)]
+        public string PassportNumber { get; set; }
+        [MinLength(3,ErrorMessage ="invalide"),MaxLength(25, ErrorMessage = "invalide")]
         public string ? FirstName { get; set; }
         public string ? LastName { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayName("Date of birth")]
         public DateTime BirthDate { get; set; }
+        [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Invalid Phone Number!")]
         public int TelNumber { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string ? EmailAdress { get; set; }
 
         //Proprieté de navigation
