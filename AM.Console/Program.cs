@@ -41,8 +41,7 @@ Plane p5 = new Plane
 
 Passenger p1 = new Passenger
 {
-    FirstName= "Mahdi",
-    LastName= "Dridi",
+    FullName = new FullName { FirstName = "Mahdi", LastName = "Dridi" },
     EmailAdress = "mahdi.dridi@esprit.tn"
 };
 p1.PassengerType();

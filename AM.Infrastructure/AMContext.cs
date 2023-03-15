@@ -35,6 +35,13 @@ namespace AM.Infrastructure
         {
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
             modelBuilder.ApplyConfiguration(new FlightConfiguration());
+            //Configuration complexe Fluent API
+            modelBuilder.Entity<Passenger>()
+                .OwnsOne(p => p.FullName, full =>
+                {
+                    full.Property(p => p.FirstName).HasMaxLength(30).HasColumnName("PassFirstName");
+                    full.Property(p => p.LastName).HasColumnName("PassLastName").IsRequired();
+                });
         }
         //override con
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)

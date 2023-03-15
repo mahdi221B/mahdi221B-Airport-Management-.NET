@@ -16,35 +16,35 @@ namespace AM.ApplicationCore.Domain
         [Key,StringLength(7)]
         public string PassportNumber { get; set; }
         [MinLength(3,ErrorMessage ="invalide"),MaxLength(25, ErrorMessage = "invalide")]
-        public string ? FirstName { get; set; }
-        public string ? LastName { get; set; }
+       
         [DataType(DataType.Date)]
         [DisplayName("Date of birth")]
         public DateTime BirthDate { get; set; }
         [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Invalid Phone Number!")]
         public int TelNumber { get; set; }
         [DataType(DataType.EmailAddress)]
-        public string ? EmailAdress { get; set; }
+        public string? EmailAdress { get; set; }
+        public FullName? FullName { get; set; }
 
         //Proprieté de navigation
         public ICollection<Flight> ? Flights { get; set; }
         //QuickActions + Generate Override
         public override string? ToString()
         {
-            return "Passenger passport number "+ PassportNumber + "FirstName"+ FirstName;
+            return "Passenger passport number "+ PassportNumber + "Full Name"+ FullName.ToString;
             //Est l'affichage de la méthode mére => return base.ToString();
         }
 
         //Polymorphisme
-            //M1
+        //M1
         public bool checkProfile(string FirstName, string LastName)
         {
-            return (this.FirstName.Equals(FirstName) && this.LastName.Equals(LastName));
+            return (this.FullName.FirstName.Equals(FirstName) && this.FullName.LastName.Equals(LastName));
         }
             //M2
         public bool checkProfile(string FirstName, string LastName, string Email)
         {
-            return (this.FirstName.Equals(FirstName) && this.LastName.Equals(LastName) && EmailAdress.Equals(Email));
+            return (this.FullName.FirstName.Equals(FirstName) && this.FullName.LastName.Equals(LastName) && EmailAdress.Equals(Email));
         }
             //M3
         public bool login(string FirstName, string LastName, string Email = null)
