@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AM.Infrastructure.Configuration
 {
-    internal class PlaneConfiguration : IEntityTypeConfiguration<Plane>
+    public class PlaneConfiguration : IEntityTypeConfiguration<Plane>
     {
         public void Configure(EntityTypeBuilder<Plane> builder)
         {

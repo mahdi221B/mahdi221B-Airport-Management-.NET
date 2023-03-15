@@ -21,7 +21,7 @@ namespace AM.Infrastructure
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
-            //Nom de la BD
+          
             Initial Catalog=AirportManagementDB;Integrated Security=true");
             base.OnConfiguring(optionsBuilder);
         }
@@ -34,6 +34,7 @@ namespace AM.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
+            modelBuilder.ApplyConfiguration(new FlightConfiguration());
         }
     } 
 }

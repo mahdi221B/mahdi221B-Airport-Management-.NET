@@ -20,8 +20,8 @@ namespace AM.ApplicationCore.Domain
         //Proprieté de navigation
             //deux méthode
             //M1
-            [ForeignKey("Plane")]
-            public int planeFK { get; set; }
+           // [ForeignKey("Plane")]
+            //public int planeFK { get; set; }
             //M2
             [ForeignKey("planeFK")]
             public Plane Plane { get; set; }
