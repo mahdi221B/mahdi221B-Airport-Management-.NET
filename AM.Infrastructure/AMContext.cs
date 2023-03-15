@@ -36,5 +36,11 @@ namespace AM.Infrastructure
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
             modelBuilder.ApplyConfiguration(new FlightConfiguration());
         }
+        //override con
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+                                          //<Type> (name)
+            configurationBuilder.Properties<DateTime>().HaveColumnType("Date");
+        }
     } 
 }
