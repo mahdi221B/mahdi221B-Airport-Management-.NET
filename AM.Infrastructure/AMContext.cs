@@ -1,4 +1,5 @@
 ﻿using AM.ApplicationCore.Domain;
+using AM.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace AM.Infrastructure
@@ -28,5 +29,11 @@ namespace AM.Infrastructure
         //Install 2 packages afin d'utiliser cette class de configuration DbContext et UseSqlServer
         //.Design schema de Base dans Console
         //.Tools in Infra
-    }
+
+        //Appliquer Fluent API 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new PlaneConfiguration());
+        }
+    } 
 }
